@@ -1,0 +1,3 @@
+[submodule "myq"]
+	path = myq
+	url = git@github.com:koush/myq.git

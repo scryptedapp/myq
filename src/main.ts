@@ -1,6 +1,5 @@
-
 import sdk, { ScryptedDeviceBase, DeviceProvider, Device, ScryptedDeviceType, Entry, Refresh, OnOff, Settings, Setting, EntrySensor, ScryptedInterface, Battery, Online } from '@scrypted/sdk';
-import { myQApi, myQDevice, myQDeviceInterface } from '@hjdhjd/myq';
+import { myQApi, myQDevice, myQDeviceInterface } from '../myq/src/index';
 import throttle from 'lodash/throttle';
 
 const { deviceManager } = sdk;
@@ -75,8 +74,6 @@ class GarageController extends ScryptedDeviceBase implements DeviceProvider, Set
       }
   
       this.account = new myQApi(email, password, console);
-      // apparently needs a UA https://github.com/arraylabs/pymyq/pull/182/files
-      (this.account as any).headers.set('User-Agent', `#RANDOM:5`);
     }
 
     await this.account.refreshDevices();
